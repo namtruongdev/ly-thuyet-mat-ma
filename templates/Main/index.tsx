@@ -1,0 +1,87 @@
+import { ReactNode, useState } from 'react';
+import Link from 'next/link';
+import { Layout, Menu, Breadcrumb } from 'antd';
+import {
+  DesktopOutlined,
+  PieChartOutlined,
+  CodeOutlined,
+} from '@ant-design/icons';
+
+const { Header, Sider, Content, Footer } = Layout;
+
+type BreadCrumb = {
+  name: string;
+  href: string;
+}[];
+
+const Main = ({
+  children,
+  breadCrumb,
+}: {
+  children: ReactNode;
+  breadCrumb: BreadCrumb;
+}) => {
+  const [collapsed, setCollapsed] = useState<boolean>(false);
+
+  const onCollapse = (collapsed: any) => {
+    setCollapsed(collapsed);
+  };
+
+  return (
+    <Layout style={{ minHeight: '100vh' }}>
+      <Sider
+        collapsible
+        collapsed={collapsed}
+        onCollapse={onCollapse}
+        breakpoint="lg"
+        collapsedWidth="0"
+      >
+        <div
+          className="logo"
+          style={{
+            height: '32px',
+            margin: '16px',
+            color: '#fff',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            fontWeight: 700,
+          }}
+        >
+          <CodeOutlined />{' '}
+          {!collapsed && (
+            <span style={{ marginLeft: '10px' }}> LÝ THUYẾT MẬT MÃ</span>
+          )}
+        </div>
+        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+          <Menu.Item key="1" icon={<PieChartOutlined />}>
+            <Link href="/shift-cipher">Mã dịch vòng (Shift Cipher)</Link>
+          </Menu.Item>
+          <Menu.Item key="2" icon={<DesktopOutlined />}>
+            Mã thay thế (Substitution Cipher)
+          </Menu.Item>
+        </Menu>
+      </Sider>
+      <Layout>
+        <Header style={{ padding: 0, background: '#fff' }} />
+        <Content style={{ margin: '0 16px' }}>
+          <Breadcrumb style={{ margin: '16px 0' }}>
+            {breadCrumb.map((el) => (
+              <Breadcrumb.Item key={el.name}>
+                <Link href={el.href}>{el.name}</Link>
+              </Breadcrumb.Item>
+            ))}
+          </Breadcrumb>
+          <div style={{ padding: 24, minHeight: 360, background: '#fff' }}>
+            {children}
+          </div>
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>
+          Lý thuyết mật mã © {new Date().getFullYear()} Dương Nam Trường
+        </Footer>
+      </Layout>
+    </Layout>
+  );
+};
+
+export default Main;
