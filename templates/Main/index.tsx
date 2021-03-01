@@ -17,9 +17,11 @@ type BreadCrumb = {
 const Main = ({
   children,
   breadCrumb,
+  defaultSelectedKeys,
 }: {
   children: ReactNode;
   breadCrumb: BreadCrumb;
+  defaultSelectedKeys: string[];
 }) => {
   const [collapsed, setCollapsed] = useState<boolean>(false);
 
@@ -53,12 +55,18 @@ const Main = ({
             <span style={{ marginLeft: '10px' }}> LÝ THUYẾT MẬT MÃ</span>
           )}
         </div>
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+        <Menu
+          theme="dark"
+          defaultSelectedKeys={defaultSelectedKeys}
+          mode="inline"
+        >
           <Menu.Item key="1" icon={<PieChartOutlined />}>
-            <Link href="/shift-cipher">Mã dịch vòng (Shift Cipher)</Link>
+            <Link href="/">Mã dịch vòng (Shift Cipher)</Link>
           </Menu.Item>
           <Menu.Item key="2" icon={<DesktopOutlined />}>
-            Mã thay thế (Substitution Cipher)
+            <Link href="/substitution-cipher">
+              Mã thay thế (Substitution Cipher)
+            </Link>
           </Menu.Item>
         </Menu>
       </Sider>

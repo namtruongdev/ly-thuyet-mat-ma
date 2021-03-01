@@ -3,14 +3,14 @@ import Main from '@templates/Main';
 import { Card, Form, Input, InputNumber, Button, Table, Radio } from 'antd';
 import { MODULO26, MODULO26_ARRAY } from '@constants/index';
 
-const Home = () => {
+const SubstitutionCipher = () => {
   const [columns, setColumns] = useState(undefined);
   const [data, setData] = useState<any[] | undefined>(undefined);
   const [code, setcode] = useState<string | null>(null);
   const [type, setType] = useState<number>(0);
   const breadCrumb = [
     { name: 'Trang chủ', href: '/' },
-    { name: 'Mã dịch vòng (Shift Cipher)', href: '/' },
+    { name: 'Mã thay thế (Substitution Cipher)', href: '/substitution-cipher' },
   ];
 
   const onFinish = (values: any) => {
@@ -92,10 +92,10 @@ const Home = () => {
 
   const handleChangeType = (e: any) => setType(e.target.value);
   return (
-    <Main breadCrumb={breadCrumb} defaultSelectedKeys={['1']}>
-      <Card title="Mã dịch vòng (Shift Cipher)">
+    <Main breadCrumb={breadCrumb} defaultSelectedKeys={['2']}>
+      <Card title="Mã thay thế (Substitution Cipher)">
         <Form
-          name="shift-cipher"
+          name="substitution-cipher"
           layout="vertical"
           onFinish={onFinish}
           initialValues={{ key: 0 }}
@@ -160,4 +160,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default SubstitutionCipher;
