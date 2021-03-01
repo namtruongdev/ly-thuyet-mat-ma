@@ -8,7 +8,8 @@
       "@context/*": ["context/*"],
       "@styles/*": ["styles/*"],
       "@config/*": ["config/*"],
-      "@templates/*": ["templates/*"]
+      "@templates/*": ["templates/*"],
+      "@constants/*": ["constants/*"]
     },
     "target": "esnext",
     "module": "esnext",
