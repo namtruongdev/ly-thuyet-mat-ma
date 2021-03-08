@@ -68,6 +68,12 @@ const Main = ({
               Mã thay thế (Substitution Cipher)
             </Link>
           </Menu.Item>
+          <Menu.Item key="3" icon={<DesktopOutlined />}>
+            <Link href="/gcd">GCD (Thuật toán Euclid)</Link>
+          </Menu.Item>
+          <Menu.Item key="4" icon={<DesktopOutlined />}>
+            <Link href="/phi">Φ (Phi)</Link>
+          </Menu.Item>
         </Menu>
       </Sider>
       <Layout>
