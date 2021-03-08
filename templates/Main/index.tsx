@@ -1,5 +1,5 @@
 import { ReactNode, useState } from 'react';
-import { Head } from 'next/document';
+import Head from 'next/head';
 import Link from 'next/link';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import {

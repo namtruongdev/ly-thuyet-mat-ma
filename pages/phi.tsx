@@ -10,7 +10,6 @@ const Home = () => {
     { name: 'Trang chủ', href: '/' },
     { name: 'Φ (Phi)', href: '/phi' },
   ];
-  console.log(Prime(5));
   const onFinish = (values: any) => {
     const phi = values.phi;
     let result = ``;
@@ -24,6 +23,7 @@ const Home = () => {
             result += `<p>Φ(${phi}) = Φ(${i}<sup>${j}</sup>) = ${phi}(1 - 1/${i}) = ${parseInt(
               `${phi * (1 - 1 / i)}`
             )}</p>`;
+
             return setResult(result);
           }
         }
@@ -37,6 +37,7 @@ const Home = () => {
             result += `<p>Φ(${phi}) = Φ(${A}) . Φ(${B}) = ${A - 1} . ${
               B - 1
             } = ${parseInt(`${(A - 1) * (B - 1)}`)}</p>`;
+
             return setResult(result);
           } else if (Prime(A) && !Prime(B)) {
             for (const i of PRIME_NUMBER) {
@@ -49,7 +50,21 @@ const Home = () => {
                   } . ${B}(1 - 1/${i}) = ${parseInt(
                     `${(A - 1) * (B * (1 - 1 / i))}`
                   )}</p>`;
+
                   return setResult(result);
+                } else {
+                  for (let i = 2; i <= Math.sqrt(B); i++) {
+                    if (Number.isInteger(B / i)) {
+                      const C = i;
+                      const D = B / i;
+                      result += `<p>Φ(${phi}) = Φ(${A}) . Φ(${B}) = ${
+                        A - 1
+                      } . ${C} . ${D} = ${A - 1} . ${C - 1} . ${
+                        D - 1
+                      } = ${parseInt(`${(A - 1) * (C - 1) * (D - 1)}`)}</p>`;
+                      return setResult(result);
+                    }
+                  }
                 }
               }
             }
@@ -90,6 +105,7 @@ const Home = () => {
               }) = ${parseInt(
                 `${A * (1 - 1 / factorA.i) * (B * (1 - 1 / factorB.i))}`
               )}</p>`;
+
               return setResult(result);
             }
           }
